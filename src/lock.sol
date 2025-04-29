@@ -3,14 +3,13 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title TokenLock
  * @dev A simple lockup contract where users lock ERC20 tokens for a specified duration.
  *      Users can only unlock after the lock period has elapsed.
  */
-contract TokenLock is Ownable {
+contract TokenLock  {
     using SafeERC20 for IERC20;
 
     IERC20 public immutable lockToken;
