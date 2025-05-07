@@ -52,10 +52,7 @@ contract MultiTokenLock is Ownable {
         IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
 
         uint256 unlockAt = block.timestamp + lockDuration;
-        userLocks[msg.sender][token].push(LockInfo({
-            amount: amount,
-            unlockTime: unlockAt
-        }));
+        userLocks[msg.sender][token].push(LockInfo({amount: amount, unlockTime: unlockAt}));
 
         totalLocked[token] += amount;
 

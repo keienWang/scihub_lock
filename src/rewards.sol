@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract StakeVault is Ownable {
-    
     struct StakeInfo {
         uint256 amount;
         uint256 startTime;
@@ -46,12 +45,9 @@ contract StakeVault is Ownable {
         UserProjectStake storage ups = userStakes[projectId][msg.sender];
         projects[projectId].totalStaked += amount;
         ups.totalStaked += amount;
-        ups.records.push(StakeInfo({
-            amount: amount,
-            startTime: block.timestamp,
-            lockMonths: lockMonths,
-            withdrawn: false
-        }));
+        ups.records.push(
+            StakeInfo({amount: amount, startTime: block.timestamp, lockMonths: lockMonths, withdrawn: false})
+        );
 
         stakeToken.transferFrom(msg.sender, address(this), amount);
         emit Staked(msg.sender, projectId, amount, lockMonths);
