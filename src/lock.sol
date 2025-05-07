@@ -9,7 +9,7 @@ import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
  * @title MultiTokenLockWithWhitelist
  * @dev Lock contract with multi-token support and token whitelist management.
  */
-contract MultiTokenLock is Ownable {
+contract MultiTokenLock is Ownable(msg.sender) {
     using SafeERC20 for IERC20;
 
     struct LockInfo {
